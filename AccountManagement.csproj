@@ -1,0 +1,40 @@
+using System;
+
+namespace AccountManagement
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Customer customer1 = new Customer(123456789, "Zohar", "0501234567");
+            Customer customer2 = new Customer(987654321, "Noam", "0527654321");
+
+            CheckingAccount account1 = new CheckingAccount(1001, 1500, customer1, 500);
+            CheckingAccount account2 = new CheckingAccount(1002, 3000, customer2, 1000);
+
+            BankBranch branch = new BankBranch(12, "Herzl 15, Netanya");
+
+            branch.AddAccount(account1);
+            branch.AddAccount(account2);
+
+            Console.WriteLine("Customer details:");
+            customer1.PrintDetails();
+            Console.WriteLine();
+            customer2.PrintDetails();
+            Console.WriteLine();
+
+            account1.Deposit(300);
+            account1.Deposit(200, "30/04/2026");
+            account1.Withdraw(2200);
+            account1.PrintBalance();
+            Console.WriteLine();
+
+            account2.Withdraw(3500);
+            account2.PrintBalance();
+            Console.WriteLine();
+
+            Console.WriteLine("All branch accounts:");
+            branch.PrintAccounts();
+        }
+    }
+}
